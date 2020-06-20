@@ -12,6 +12,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -25,22 +27,20 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.Font;
 
-public class UserInt extends JFrame {
+
+public class Cos extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UserInt frame = new UserInt();
+					Cos frame = new Cos();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,6 @@ public class UserInt extends JFrame {
 			}
 		});
 	}
-	
 	class TableData extends AbstractTableModel{
 
 		@Override
@@ -74,29 +73,60 @@ public class UserInt extends JFrame {
 	public ArrayList<User> userList() {
 		return null;
 	}
-	
 	/**
 	 * Create the frame.
 	 */
-	
-	public UserInt() {
+	public Cos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1043, 796);
-		setPreferredSize(new Dimension(1043, 796));
+		setBounds(100, 100, 602, 630);
+		setPreferredSize(new Dimension(602, 630));
 		setUndecorated(true);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 204, 102));
-		contentPane.setForeground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblNewLabel.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel = new JLabel("Cosul Meu");
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setBackground(new Color(255, 204, 153));
+		lblNewLabel.setFont(new Font("Segoe Script", Font.BOLD, 22));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(208, 34, 150, 46);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Cos rgf = new Cos();
+				dispose();
+			}
+		});
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_1.setIcon(new ImageIcon(Cos.class.getResource("/Exit.png")));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(568, 0, 46, 23);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+		lblNewLabel_2.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int cordonataX = e.getXOnScreen();
+				int cordonataY = e.getYOnScreen();
+				setLocation(cordonataX, cordonataY); 
+			}
+		});
+		lblNewLabel_2.setBounds(10, 0, 548, 23);
+		contentPane.add(lblNewLabel_2);
+		
+		JButton btnNewButton = new JButton("Inapoi");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				UserInt rgf = new UserInt();
 				rgf.setVisible(true);
 				rgf.pack();
 				rgf.setLocationRelativeTo(null);
@@ -104,48 +134,18 @@ public class UserInt extends JFrame {
 				dispose();
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(UserInt.class.getResource("/Cos.png")));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 11, 80, 55);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-		});
-		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblNewLabel_1.setIcon(new ImageIcon(UserInt.class.getResource("/Exit.png")));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(1004, 0, 52, 31);
-		contentPane.add(lblNewLabel_1);
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.setBackground(new Color(255, 102, 51));
+		btnNewButton.setFont(new Font("Segoe Script", Font.PLAIN, 16));
+		btnNewButton.setForeground(new Color(0, 0, 0));
+		btnNewButton.setBounds(23, 580, 89, 23);
+		contentPane.add(btnNewButton);
 		
 		table = new JTable();
-		table.setBounds(75, 93, 917, 661);
+		table.setBounds(45, 91, 502, 440);
 		contentPane.add(table, BorderLayout.CENTER);
 		TableData td= new TableData();
 		table.setModel(td);
 		
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				int cordonataX = e.getXOnScreen();
-				int cordonataY = e.getYOnScreen();
-				setLocation(cordonataX, cordonataY); 
-				
-			}
-		});
-		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
-		lblNewLabel_2.setBounds(103, 0, 891, 25);
-		contentPane.add(lblNewLabel_2);
-		
-		lblNewLabel_3 = new JLabel("FlowersDelivery");
-		lblNewLabel_3.setFont(new Font("Segoe Script", Font.BOLD, 25));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(423, 32, 226, 34);
-		contentPane.add(lblNewLabel_3);
 	}
 }

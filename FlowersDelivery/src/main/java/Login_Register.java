@@ -145,18 +145,26 @@ public class Login_Register extends JFrame {
 				String forType = raf.readLine().substring(5);
 				if(usr.contentEquals(forUser) & pswd.equals(forPswd)) {
 					JOptionPane.showMessageDialog(null, "Corect");
+					if(typ.contentEquals(forType)) {
 					UserInt rgf = new UserInt();
 					rgf.setVisible(true);
 					rgf.pack();
 					rgf.setLocationRelativeTo(null);
 					rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					dispose();
-					break;
+					break;}else {
+						FlowInt rgf = new FlowInt();
+						rgf.setVisible(true);
+						rgf.pack();
+						rgf.setLocationRelativeTo(null);
+						rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						dispose();
+					}
 				}else if(i==(ln-7)){
-					JOptionPane.showMessageDialog(null, "Incorect");
+					JOptionPane.showMessageDialog(null, "Nume/Parola nu exista!");
 					break;
 				}
-				for(int k=1;k<=6;k++) {
+				for(int k=1;k<=5;k++) {
 					raf.readLine();
 				}
 			}
@@ -222,7 +230,7 @@ public class Login_Register extends JFrame {
 				createFolder();
 				readFile();
 				countLines();
-				logic(textField.getText(),passwordField.getText(),"user");
+				logic(textField.getText(),passwordField.getText(),"User");
 			}
 		});
 		txtLogin.setAlignmentX(Component.LEFT_ALIGNMENT);

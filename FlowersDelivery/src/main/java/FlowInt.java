@@ -36,7 +36,7 @@ public class FlowInt extends javax.swing.JFrame {
     public FlowInt() {
     	getContentPane().setBackground(new Color(255, 204, 102));
 		setUndecorated(true);
-		setPreferredSize(new Dimension(543,596));
+		setPreferredSize(new Dimension(543,600));
 
         initComponents();
         //Calling method/function to add column header to jtable

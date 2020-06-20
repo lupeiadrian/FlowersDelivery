@@ -89,7 +89,7 @@ public class Register extends JFrame {
 		
 	}
 	
-	void addData(String usr, String pswd, String mail, String name, String phone, String type) {
+	void addData(String usr, String pswd, String type, String mail, String name, String phone) {
 		try {
 			RandomAccessFile raf = new RandomAccessFile(f+"\\logins.txt","rw");
 			for(int i=0;i<ln;i++) {
@@ -101,10 +101,10 @@ public class Register extends JFrame {
 	            } 
 			raf.writeBytes("Username:"+usr+ "\r\n");
 			raf.writeBytes("Password:"+pswd+ "\r\n");
+			raf.writeBytes("Type:"+type + "\r\n");
 			raf.writeBytes("Email:"+mail+ "\r\n");
 			raf.writeBytes("Name:"+name+ "\r\n");
 			raf.writeBytes("Phone:"+phone+ "\r\n");
-			raf.writeBytes("Type:"+type + "\r\n");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -273,9 +273,9 @@ public class Register extends JFrame {
 				readFile();
 				countLines();
 				if(chckbxNewCheckBox.isSelected()) {
-					addData(textField.getText(),passwordField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText(),"User");}
+					addData(textField.getText(),passwordField.getText(),"User",textField_1.getText(),textField_2.getText(),textField_3.getText());}
 				if(chckbxNewCheckBox_1.isSelected()) {
-					addData(textField.getText(),passwordField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText(),"Flower");
+					addData(textField.getText(),passwordField.getText(),"Flower",textField_1.getText(),textField_2.getText(),textField_3.getText());
 				}
 				
 			}

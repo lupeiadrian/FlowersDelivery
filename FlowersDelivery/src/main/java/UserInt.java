@@ -28,6 +28,7 @@ public class UserInt extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JLabel lblNewLabel_2;
 
 	/**
 	 * Launch the application.
@@ -119,18 +120,18 @@ public class UserInt extends JFrame {
 		TableData td= new TableData();
 		table.setModel(td);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				int cordonataX = e.getXOnScreen();
 				int cordonataY = e.getYOnScreen();
-				
 				setLocation(cordonataX, cordonataY); 
+				
 			}
 		});
-		lblNewLabel_2.setBounds(100, 0, 903, 31);
+		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+		lblNewLabel_2.setBounds(103, 0, 891, 25);
 		contentPane.add(lblNewLabel_2);
 	}
 }

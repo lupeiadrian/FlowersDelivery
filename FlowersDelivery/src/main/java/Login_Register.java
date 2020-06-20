@@ -136,12 +136,13 @@ public class Login_Register extends JFrame {
 		}  
 	}
 	
-	void logic(String usr, String pswd) {
+	void logic(String usr, String pswd, String typ) {
 		try {
 			RandomAccessFile raf = new RandomAccessFile(f+"\\logins.txt","rw");
 			for(int i=0;i<ln;i+=8) {
 				String forUser = raf.readLine().substring(9);
 				String forPswd = raf.readLine().substring(9);
+				String forType = raf.readLine().substring(5);
 				if(usr.contentEquals(forUser) & pswd.equals(forPswd)) {
 					JOptionPane.showMessageDialog(null, "Corect");
 					UserInt rgf = new UserInt();
@@ -221,7 +222,7 @@ public class Login_Register extends JFrame {
 				createFolder();
 				readFile();
 				countLines();
-				logic(textField.getText(),passwordField.getText());
+				logic(textField.getText(),passwordField.getText(),"user");
 			}
 		});
 		txtLogin.setAlignmentX(Component.LEFT_ALIGNMENT);
